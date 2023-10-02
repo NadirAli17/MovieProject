@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.util.HashMap;
+
+/* Nadir Ali Movie Theatre Project using OOP and GUI setup. */
 public class Main {
 
     public static void screen(){
@@ -48,24 +50,24 @@ public class Main {
         price = (adults * 8) + (children * 5) + (elderlyBabies * 0);
 
         System.out.println("Your price is " + price + ". If that is ok please type YES");
-        System.out.println("Which tickets would you like. Type in the following seats, Example B5 C5 D5");
+        System.out.println("Which tickets would you like. Press which tickets you would like");
     }
 
         public static void main (String[]args){
-            //guiSetUp finalGui = new guiSetUp(640, 480);
-            //finalGui.setUpGui(); GUI NOT FINISHED
-
             int rows = 7;
             int cols = 7;
             theatreSeats name = new theatreSeats(rows, cols);
             String[][] finalArr = name.build2DArray1();
             Admin finalAdmin = new Admin(name, finalArr);
+
             screen();
             name.buildPrintArrayF(finalArr);
             System.out.println("");
             int ticketCount = getTicketCount(finalAdmin);
+            MovieTheaterGUI movie = new MovieTheaterGUI(rows, cols, finalArr, ticketCount);
+            movie.updateSeatStatus(finalArr);
 
             mainMovieInterface(rows, cols, name.setArray,finalAdmin, name, ticketCount);
-            theatreSeats.bookASpot(finalArr, ticketCount, name);
+            //theatreSeats.bookASpot(finalArr, ticketCount, name);
         }
     }

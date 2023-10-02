@@ -82,6 +82,13 @@ public static void bookASpot(String[][] setArrayFinal, int numOfTickets, theatre
     while (i < numOfTickets) {
         System.out.print("Which seat? " + i);
         String seat = scanner.next();
+        char charecter = '0';
+        charecter = seat.charAt(1);
+        if(seat.length() < 2 || seat.length() > 1 || !Character.isDigit(charecter) ){
+            System.out.println("In correct input");
+            return;
+        }
+
         char firstChar = seat.charAt(0);
         char secondChar = seat.charAt(1);
 
